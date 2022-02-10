@@ -81,22 +81,7 @@ const TemplateSlice = createSlice({
 				}
 			});
 
-			// if (payload === "Dsc") {
-			// 	state.categorizedTemp.sort((a, b) => {
-			// 		let nameA = a.name.toLowerCase();
-			// 		let nameB = b.name.toLowerCase();
 
-			// 		if (nameA < nameB) {
-			// 			return 1;
-			// 		}
-
-			// 		if (nameA > nameB) {
-			// 			return -1;
-			// 		}
-
-			// 		return 0;
-			// 	});
-			// }
 		},
 
 		// DATE FORMAT
@@ -141,6 +126,7 @@ const TemplateSlice = createSlice({
 		},
 
 		[fetchTemplate.fulfilled]: (state, { payload }) => {
+			state.loading = "loaded";
 			state.templates = payload;
 			state.categorizedTemp = payload;
 		},

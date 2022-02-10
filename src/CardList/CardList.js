@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
+
 import Card from "./Card";
 import "./card.css";
 
 function CardList() {
-	const { templates, loading, categorizedTemp, tempCategory } = useSelector(
+	const { categorizedTemp, tempCategory } = useSelector(
 		(state) => state.template
 	);
 
@@ -27,13 +28,14 @@ function CardList() {
 		let tempList = finalData.slice(pageVisited, pageVisited + pageCount);
 
 		pagNum = Math.ceil(finalData.length / pageCount);
-		card = tempList.map((item) => {
+		card = tempList.map((item,index) => {
 			return (
 				<Card
 					name={item.name}
 					description={item.description}
 					link={item.link}
 					date={item.created}
+					key={index}
 				/>
 			);
 		});

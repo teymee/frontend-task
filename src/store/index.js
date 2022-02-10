@@ -3,6 +3,10 @@ import TemplateSlice from './template-slice';
 
 const store = configureStore({
       reducer: {template: TemplateSlice.reducer},
+      middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            immutableCheck: { warnAfter: 400 },
+            serializableCheck: { warnAfter: 400 },
+          })
      
 })
 

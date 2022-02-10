@@ -1,20 +1,11 @@
 .cardList {
 	margin: auto auto;
-	animation: list 1.6s;
+	
 
 	/* margin-left: 200px; */
 }
 
-@keyframes list {
-	0% {
-		position: relative;
-		left: 100px;
-	}
-	100% {
-		position: relative;
-		left: 0px;
-	}
-}
+
 .card {
 	background: #ffffff;
 	/* background-color: #1e1e1e; */

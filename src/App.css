@@ -2,8 +2,19 @@
   width: 85%;
   margin: auto auto;
   height: 100%;
+  animation: list 1.4s ;
 }
 
+@keyframes list {
+	0% {
+		position: relative;
+	top: 1000px;
+	}
+	100% {
+		position: relative;
+		top: 0px;
+	}
+}
 
 .notification{
   background-color: #FFF4EA;

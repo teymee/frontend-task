@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import "./search.css";
 import { BsSearch } from "react-icons/bs";
 import { templateActions } from "../store/template-slice";
@@ -14,31 +14,28 @@ function Search() {
 	const dispatch = useDispatch();
 
 	const changeCategory = (event) => {
-		inputEl.current.value = ""
+		inputEl.current.value = "";
 		let category = event.target.value;
 		setTempCat(category);
 		dispatch(templateActions.getTempCat(category));
 	};
 
 	const orderFormat = (event) => {
-		setTempDate('Default')
-		dispatch(templateActions.tempFormatDate('Default'));
+		setTempDate("Default");
+		dispatch(templateActions.tempFormatDate("Default"));
 
 		let order = event.target.value;
-		console.log(order);
 		setTempOrder(order);
-
 
 		dispatch(templateActions.tempFormatOrder(order));
 	};
 
 	const dateFormat = (event) => {
 		let format = event.target.value;
-		console.log(format);
 		setTempDate(format);
 
-		setTempOrder('Default')
-		dispatch(templateActions.tempFormatOrder('Default'));
+		setTempOrder("Default");
+		dispatch(templateActions.tempFormatOrder("Default"));
 		dispatch(templateActions.tempFormatDate(format));
 	};
 
@@ -58,10 +55,14 @@ function Search() {
 				className="search-form flex justify-between  items-center lg:w-1/4 "
 				onSubmit={searchTemp}
 			>
-				<input type="text" placeholder="Search Templates" ref={inputEl} className="w-5/6 py-3 px-3"/>
-				<span className=" px-5" >
-
-				<BsSearch />
+				<input
+					type="text"
+					placeholder="Search Templates"
+					ref={inputEl}
+					className="w-5/6 py-3 px-3"
+				/>
+				<span className=" px-5">
+					<BsSearch />
 				</span>
 			</form>
 
@@ -69,7 +70,7 @@ function Search() {
 				<p className="px-1">Sort By:</p>
 				<div className="filter-form px-5 py-2  ">
 					<label> Category</label>
-					<select className="l" onChange={changeCategory} >
+					<select className="l" onChange={changeCategory}>
 						<option>All</option>
 						<option value={"Education"}>Education</option>
 						<option value={"E-commerce"}>E-commerce</option>
