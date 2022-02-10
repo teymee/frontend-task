@@ -1,0 +1,99 @@
+.cardList {
+	margin: auto auto;
+	animation: list 1.6s;
+
+	/* margin-left: 200px; */
+}
+
+@keyframes list {
+	0% {
+		position: relative;
+		left: 100px;
+	}
+	100% {
+		position: relative;
+		left: 0px;
+	}
+}
+.card {
+	background: #ffffff;
+	/* background-color: #1e1e1e; */
+	/* color: #b9b9b9; */
+	box-shadow: 0px 4px 30px 0px #00000014;
+	/* width: 80%; */
+	border-radius: 8px;
+	/* height: 200px; */
+}
+
+.header {
+	/* width: 90%; */
+	margin: auto auto;
+}
+
+.card .container {
+	width: 80%;
+	height: 75%;
+	margin: auto auto;
+}
+
+.card span {
+	background: #f9f9f9;
+	/* background-color: #2d2d2d; */
+	/* color: #c9f7f2; */
+	width: 100%;
+	display: block;
+	color: #08BD37;
+	font-size: 13px;
+	height: 25%;
+	border-radius: 8px;
+}
+
+.card h1 {
+	/* font-size: 24px; */
+	font-weight: 500;
+	line-height: 32px;
+	letter-spacing: 0em;
+	text-align: left;
+}
+
+.card p {
+	font-family: Inter;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0em;
+	text-align: left;
+}
+
+/* PAGINATION */
+
+.pagination {
+	margin: auto auto;
+	/* width: 70% !important; */
+	padding-bottom: 200px;
+	display: flex;
+	justify-content: space-around;
+	/* background-color: blue; */
+}
+
+.indicator {
+	font-weight: bold;
+}
+
+.active-page {
+	background-color: black;
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+	.pagination {
+		width: 100% !important;
+	}
+
+	.active-page {
+		padding: 0.2rem 0.5rem;
+		border-radius: 5px;
+	}
+}

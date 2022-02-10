@@ -1,0 +1,58 @@
+.nav {
+	margin-top: 3rem;
+	margin: auto auto;
+	padding-top: 5rem;
+}
+
+
+.search-form input{
+	outline: none;
+}
+
+
+.search-form,
+.filter-form {
+	border: 1px #bdbdbd solid;
+	font-size: 14px;
+}
+
+.search-form, .filter p {
+	color: #8f8b8b;
+      font-size: 13px;
+}
+
+select {
+	outline: none !important;
+	background-color: transparent;
+}
+.filter-form {
+	position: relative;
+}
+
+option {
+	padding: 100px;
+	width: 200px;
+}
+
+label {
+	position: absolute;
+	top: -12px;
+	background-color: white;
+	padding-right: 3px;
+	padding-left: 3px;
+	color: #8f8b8b;
+	font-size: 12px;
+}
+
+@media only screen and (max-width: 1040px) {
+	.search-form, .filter-form, .filter p{
+		margin-bottom: 30px;
+	}
+
+	select{
+		width: 100%;
+		padding: 9px 0 ;
+	}
+
+	
+    }
