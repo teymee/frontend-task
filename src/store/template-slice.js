@@ -8,6 +8,7 @@ let initialState = {
 	loading: "pending",
 };
 
+// FETCH DATA
 export const fetchTemplate = createAsyncThunk(
 	"template/fetchTemplate",
 	async () => {
@@ -61,7 +62,10 @@ const TemplateSlice = createSlice({
 				let nameA = a.name.toLowerCase();
 				let nameB = b.name.toLowerCase();
 
+				
 				if (payload === "Asc") {
+
+					// Filter in Ascending order
 					if (nameA < nameB) {
 						return -1;
 					}
@@ -72,6 +76,8 @@ const TemplateSlice = createSlice({
 
 					return 0;
 				} else if (payload === "Dsc") {
+
+					// Filter in Descending order
 					if (nameA < nameB) {
 						return 1;
 					}
@@ -96,7 +102,9 @@ const TemplateSlice = createSlice({
 				let dateA = a.created.replace(/[: . T -]/g, "");
 				let dateB = b.created.replace(/[: . T -]/g, "");
 
+
 				if (payload === "Asc") {
+					// Filter in Ascending order
 					if (dateA < dateB) {
 						return -1;
 					}
@@ -107,6 +115,8 @@ const TemplateSlice = createSlice({
 
 					return 0;
 				} else if (payload === "Dsc") {
+
+					// Filter in Descending order
 					if (dateA < dateB) {
 						return 1;
 					}
@@ -121,6 +131,7 @@ const TemplateSlice = createSlice({
 		},
 	},
 
+	// EXTRA-REDUCERS TO RESOLVE GET REQUEST
 	extraReducers: {
 		[fetchTemplate.pending]: (state) => {
 			state.loading = "pending";
