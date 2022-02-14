@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+let initialState = {
+	templates: null,
+	categorizedTemp: null,
+	tempCategory: "All",
+	loading: "pending",
+};
+
 export const fetchTemplate = createAsyncThunk(
 	"template/fetchTemplate",
 	async () => {
@@ -15,43 +22,39 @@ export const fetchTemplate = createAsyncThunk(
 	}
 );
 
-let initialState = {
-	templates: null,
-	categorizedTemp: null,
-
-	tempCategory: "All",
-
-	loading: "pending",
-};
-
 const TemplateSlice = createSlice({
 	name: "template",
 	initialState,
 	reducers: {
+		// FILTER BY CATEGORY
 		getTempCat: (state, { payload }) => {
 			state.tempCategory = payload;
 			if (payload === "All") {
 				state.categorizedTemp = state.templates;
 			} else {
-				let catTemplate = state.templates.filter((item) => {
+				state.categorizedTemp = state.templates.filter((item) => {
 					return item.category.includes(payload);
 				});
-
-				state.categorizedTemp = catTemplate;
 			}
 		},
 
+		//SEARCH TEMPLATES
 		searchTemp: (state, { payload }) => {
-			let search = state.categorizedTemp.filter((item) => {
-				return item.name.includes(payload.input);
-			});
+			if (payload.input.length <= 0) {
+				state.categorizedTemp = state.templates;
+			} else {
+				let search = state.categorizedTemp.filter((item) => {
+					return item.name.includes(payload.input.toLowerCase());
+				});
 
-			state.categorizedTemp = search;
+				state.categorizedTemp = search;
+			}
 		},
 
+		//FILTER BY ALPHABETICAL ORDER
 		tempFormatOrder: (state, { payload }) => {
-			if (payload === "Default") {
-				state.categorizedTemp = state.templates;
+			if (state.unSortedTemp === null) {
+				state.unSortedTemp = state.categorizedTemp;
 			}
 
 			state.categorizedTemp.sort((a, b) => {
@@ -80,15 +83,13 @@ const TemplateSlice = createSlice({
 					return 0;
 				}
 			});
-
-
 		},
 
-		// DATE FORMAT
+		// FILTER BY DATE
 
 		tempFormatDate: (state, { payload }) => {
-			if (payload === "Default") {
-				state.categorizedTemp = state.templates;
+			if (state.unSortedTemp === null) {
+				state.unSortedTemp = state.categorizedTemp;
 			}
 
 			state.categorizedTemp.sort((a, b) => {

@@ -1,28 +1,24 @@
 import { render, screen, cleanup } from "@testing-library/react";
-import renderer from 'react-test-renderer'
-import CardList from "../CardList/CardList";
-import Card from '../CardList/Card'
 
-
-
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 import store from "../store";
+import List from "../Components/CardList/List";
 
-afterEach(()=>{
-      cleanup()
-})
-test('Render CardList component', ()=>{
-      render(
-            <Provider store={store}>
-      <CardList/>
-      </Provider>)
-      const cardListElement = screen.getByTestId('test-1')
-      expect(cardListElement).toBeInTheDocument();
-})
+afterEach(() => {
+	cleanup();
+});
 
-test('match snapshot', ()=>{
-      const temp = {name:"laboris proident, velit", description:"proident, deserunt dolore cupidatat ullamco"}
-      const tree = renderer.create(<Card name={temp.name} description={temp.description}/>).toJSON()
-      expect(tree).toMatchSnapshot();
-      
-})
+
+//TEST FOR LIST COMPONENT
+
+describe("TempList", () => {
+	it("Render List component", async () => {
+		render(
+			<Provider store={store}>
+				<List />
+			</Provider>
+		);
+		const cardListElement = await screen.findByTestId("test-1");
+		expect(cardListElement).toBeInTheDocument();
+	});
+});

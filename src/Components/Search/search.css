@@ -4,11 +4,9 @@
 	padding-top: 5rem;
 }
 
-
-.search-form input{
+.search-form input {
 	outline: none;
 }
-
 
 .search-form,
 .filter-form {
@@ -16,9 +14,10 @@
 	font-size: 14px;
 }
 
-.search-form, .filter p {
+.search-form,
+.filter p {
 	color: #8f8b8b;
-      font-size: 13px;
+	font-size: 13px;
 }
 
 select {
@@ -45,14 +44,14 @@ label {
 }
 
 @media only screen and (max-width: 1040px) {
-	.search-form, .filter-form, .filter p{
+	.search-form,
+	.filter-form,
+	.filter p {
 		margin-bottom: 30px;
 	}
 
-	select{
+	select {
 		width: 100%;
-		padding: 9px 0 ;
+		padding: 9px 0;
 	}
-
-	
-    }
+}
